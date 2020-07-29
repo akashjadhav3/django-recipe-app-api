@@ -1,0 +1,5 @@
+* Build docker image
+$docker-compose build
+
+* Docker using startproject
+$docker-compose run app sh -c "django-admin.py startproject app ."
