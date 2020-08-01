@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager,\
+    PermissionsMixin
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -11,7 +13,8 @@ class UserManager(BaseUserManager):
         user.save(using=self.db)
         return user
 
-    def create_superuser(self, email, password): #create using terminal not need **exra_field
+    # create using terminal not need **exra_field
+    def create_superuser(self, email, password):
         """Creates and saves a new super user"""
         user = self.create_user(email, password)
         user.is_staff = True
@@ -30,4 +33,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email' #Default is username
+    USERNAME_FIELD = 'email'  # Default is username
